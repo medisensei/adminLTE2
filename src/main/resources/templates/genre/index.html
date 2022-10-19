@@ -8,11 +8,11 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<a class="btn btn-primary my-5 ml-2" th:href="@{/genre/add}">Add
+		<a class="btn btn-primary my-5 ml-2" th:href="@{/genre/add}"><i class="fa fa-table"></i> Add
 			New Genre</a>
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title">Genres</h3>
+				<h3 class="card-title text-info">Genres</h3>
 
 				<div class="card-tools">
 					<form method="get" th:action="@{/genre}">
@@ -35,15 +35,15 @@
 					<thead>
 						<tr>
 							<th>Libelle</th>
-							<th></th>
+							<th>Options</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="s : ${list}">
 							<td th:text="${s.libelle}"></td>
-							<td><a th:href="${'/genre/delete/'+s.ID}">Delete</a> | <a
-								th:href="${'/genre/update/'+s.ID}">Update</a> | <a
-								th:href="@{'/genre/details/'+${s.ID}}">Details</a></td>
+							<td><a
+								th:href="${'/genre/update/'+s.ID}"><i class="fa fa-edit"></i> Update</a>  |
+							<a th:href="${'/genre/delete/'+s.ID}"><i class="fa fa-trash"></i> Delete</a> 
 						</tr>
 					</tbody>
 				</table>

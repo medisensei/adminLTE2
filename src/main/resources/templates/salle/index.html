@@ -7,10 +7,10 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<a class="btn btn-primary my-5 ml-2" th:href="@{/salle/add}">Add New Salle</a>
+		<a class="btn btn-primary my-5 ml-2" th:href="@{/salle/add}"><i class="fa fa-table"></i> Add New Salle</a>
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title">Salles</h3>
+				<h3 class="card-title text-info">Salles</h3>
 
 				<div class="card-tools">
 					<div class="input-group input-group-sm" style="width: 150px;">
@@ -27,13 +27,13 @@
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body table-responsive p-0">
-				<table class="table table-hover text-nowrap">
+				<table class="table table-striped text-nowrap">
 					<thead>
 						<tr>
 							<th>Numero</th>
 							<th>Capacite</th>
 							<th>Created At</th>
-							<th></th>
+							<th>Options</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -41,9 +41,9 @@
 							<td th:text="${s.numero}"></td>
 							<td th:text="${s.capacite}"></td>
 							<td th:text="${s.addedDate}"></td>
-							<td><a th:href="${'/salle/delete/'+s.ID}">Delete</a> | <a
-								th:href="${'/salle/update/'+s.ID}">Update</a> | <a
-								th:href="@{'/salle/details/'+${s.ID}}">Details</a></td>
+							<td><a th:href="${'/salle/delete/'+s.ID}"><i class="fa fa-trash"></i> Delete</a> | <a
+								th:href="${'/salle/update/'+s.ID}"><i class="fa fa-edit"></i> Update</a> | <a
+								th:href="@{'/salle/details/'+${s.ID}}"><i class="fa fa-bars" aria-hidden="true"></i> Details</a></td>
 						</tr>
 					</tbody>
 				</table>
