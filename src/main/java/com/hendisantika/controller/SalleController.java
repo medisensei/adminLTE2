@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hendisantika.entity.Salle;
 import com.hendisantika.service.SalleService;
@@ -20,8 +21,19 @@ public class SalleController {
 	
 	
 	@GetMapping
-	public String index(Model model) {
+	public String index(@RequestParam(value = "filter", required = false) String filter, Model model) {
+		
+		if(filter == null)
 		model.addAttribute("listSalles",salleService.getSalles());
+		
+		else {
+			
+			model.addAttribute("filter", filter);
+			model.addAttribute("listSalles",salleService.getSalleByNum(Integer.parseInt(filter)));
+			
+			
+		}
+		
 		return "salle/index";
 	}
 	@GetMapping(value= "/add")

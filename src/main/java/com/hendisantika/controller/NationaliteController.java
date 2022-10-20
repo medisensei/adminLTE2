@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hendisantika.entity.Nationalite;
 import com.hendisantika.service.NationaliteService;
@@ -19,8 +20,14 @@ public class NationaliteController {
 	}
 	
 	@GetMapping
-	public String index(Model model) {
+	public String index(@RequestParam(value = "filter", required = false) String filter,Model model) {
+		if (filter == null)
 		model.addAttribute("list",nationaliteService.getList());
+		else {
+			model.addAttribute("filter", filter);
+			model.addAttribute("list", nationaliteService.getFilteredList(filter));
+		}
+		
 		return "nationalite/index";
 	}
 	@GetMapping(value = "/add")

@@ -22,6 +22,12 @@ public class SalleService {
 	public List<Salle> getSalles() {
 		return salleRepository.findAll();
 	}
+	
+	public List<Salle>getSalleByNum(int num){
+		
+		return salleRepository.findByNumero(num);
+		
+	}
 
 
 	public Salle getSalle(Long ID) {

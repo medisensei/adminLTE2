@@ -17,6 +17,14 @@ public class NationaliteService {
 	public List<Nationalite> getList(){
 		return nationaliteRepository.findAll();
 	}
+	
+	public List<Nationalite> getFilteredList(String filter){
+		
+		return nationaliteRepository.findByLibelleContaining(filter);
+	}
+	
+	
+	
 	public Nationalite getNationalite(Long ID) {
 		return nationaliteRepository.findById(ID)
 				.orElse(new Nationalite());
