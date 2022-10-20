@@ -20,32 +20,7 @@
 					alt="User Avatar">
 			</div>
 			<div class="card-footer">
-				<div class="row mt-5">
-					<div class="col-sm-4 border-right">
-						<div class="description-block">
-							<h5 class="description-header">3,200</h5>
-							<span class="description-text">Films</span>
-						</div>
-						<!-- /.description-block -->
-					</div>
-					<!-- /.col -->
-					<div class="col-sm-4 border-right">
-						<div class="description-block">
-							<h5 class="description-header">13,000</h5>
-							<span class="description-text">FOLLOWERS</span>
-						</div>
-						<!-- /.description-block -->
-					</div>
-					<!-- /.col -->
-					<div class="col-sm-4">
-						<div class="description-block">
-							<h5 class="description-header">35</h5>
-							<span class="description-text">PRODUCTS</span>
-						</div>
-						<!-- /.description-block -->
-					</div>
-					<!-- /.col -->
-				</div>
+				
 				<!-- /.row -->
 			</div>
 		</div>
@@ -89,8 +64,7 @@
 							<td th:text="${s.nationalite.libelle}"></td>
 							<td th:text="${s.realisateur.nom}+' '+${s.realisateur.prenom}"></td>
 							<td><a th:href="${'/film/delete/'+s.ID}">Delete</a> | <a
-								th:href="${'/film/update/'+s.ID}">Update</a> | <a
-								th:href="@{'/film/details/'+${s.ID}}">Details</a></td>
+								th:href="${'/film/update/'+s.ID}">Update</a> </td>
 						</tr>
 					</tbody>
 				</table>

@@ -37,6 +37,7 @@
 							<th>Date Naissance</th>
 							<th>Type</th>
 							<th>Nationalite</th>
+							<th>Photo</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -47,6 +48,8 @@
 							<td th:text="${s.dateNaissance}"></td>
 							<td th:text="${s.typePersonne}"></td>
 							<td th:text="${s.nationalite.libelle}"></td>
+							<td class="gallery2"><a th:href="${s.photo}"><img th:src="${s.photo}" width=" 50"
+								height="50"></a></td>
 							<td><a th:href="${'/personne/delete/'+s.ID}">Delete</a> | <a
 								th:href="${'/personne/update/'+s.ID}">Update</a> | <a
 								th:href="@{'/personne/details/'+${s.ID}}">Details</a></td>
