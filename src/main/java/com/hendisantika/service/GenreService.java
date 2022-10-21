@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
 
 import com.hendisantika.entity.Genre;
 import com.hendisantika.repository.GenreRepository;
 
-@Service
+@Service @Transactional
 public class GenreService {
 	GenreRepository genreRepository;
 
