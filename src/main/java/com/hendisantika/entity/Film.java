@@ -11,6 +11,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -32,6 +35,9 @@ public class Film extends AbstractModel {/**
 	@Column(nullable = false)
 	private int duree;
 	
+	@Column(nullable = true)
+	private String photo;
+	
 	@Column(nullable = false)
 	private int annee;
 	
@@ -39,7 +45,7 @@ public class Film extends AbstractModel {/**
 	@JoinColumn(name = "GENRE_ID")
 	private Genre genre;
 	
-	@OneToMany(mappedBy = "film",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "film",fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<Seance> seances;
 	
@@ -54,6 +60,7 @@ public class Film extends AbstractModel {/**
 		inverseJoinColumns = @JoinColumn(name="FILM_ID",referencedColumnName = "ID")
 	)
 	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Personne> acteurs;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

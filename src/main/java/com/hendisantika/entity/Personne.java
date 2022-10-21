@@ -12,7 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,7 +29,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor @AllArgsConstructor 
 public class Personne extends AbstractModel {
 
 	/**
@@ -41,7 +45,7 @@ public class Personne extends AbstractModel {
 
 	@Column(nullable = true,length = 100)
 	private String photo;
-	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "date_naissance")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateNaissance;
@@ -57,12 +61,12 @@ public class Personne extends AbstractModel {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "NATIONALITE_ID")
 	private Nationalite nationalite;
-	
-	@ManyToMany(mappedBy = "acteurs",fetch = FetchType.LAZY)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(mappedBy = "acteurs")
 	@JsonIgnore
 	private List<Film> films;
-	
-	@OneToMany(mappedBy = "realisateur",fetch = FetchType.LAZY)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "realisateur")
 	@JsonIgnore
 	private List<Film> filmsRealises;
 	

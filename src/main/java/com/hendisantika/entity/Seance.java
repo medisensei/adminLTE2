@@ -33,11 +33,11 @@ public class Seance extends AbstractModel {
 	@Column(name = "date_fin")
 	private Time dateFin;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "SALLE_ID")
 	private Salle salle;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "FILM_ID")
 	private Film film;
 	

@@ -27,7 +27,7 @@ public class Genre extends AbstractModel {
 	@Column(nullable = false,length = 50)
 	private String libelle;
 	
-	@OneToMany(mappedBy = "genre",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "genre",fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<Film> films;
 }

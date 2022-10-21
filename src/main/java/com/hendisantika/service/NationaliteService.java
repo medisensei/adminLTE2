@@ -3,11 +3,11 @@ package com.hendisantika.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
+import javax.transaction.Transactional;
 import com.hendisantika.entity.Nationalite;
 import com.hendisantika.repository.NationaliteRepository;
 
-@Service
+@Service @Transactional
 public class NationaliteService {
 	NationaliteRepository nationaliteRepository;
 	public NationaliteService(NationaliteRepository nationaliteRepository) {
