@@ -1,6 +1,6 @@
 package com.hendisantika.entity;
 
-import java.sql.Time;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,14 +28,21 @@ public class Seance extends AbstractModel {
 	 */
 	private static final long serialVersionUID = 5970978952680800668L;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "date_projection")
 	private Date dateProjection;
 	
-	@Column(name = "date_debut")
-	private Time dateDebuT;
 	
+	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern="HH:mm")
+	@Column(name = "date_debut")
+	private Date dateDebuT;
+	
+	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern="HH:mm")
 	@Column(name = "date_fin")
-	private Time dateFin;
+	private Date dateFin;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SALLE_ID")

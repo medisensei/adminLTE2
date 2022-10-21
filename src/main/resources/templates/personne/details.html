@@ -63,8 +63,8 @@
 							<td th:text="${s.genre.libelle}"></td>
 							<td th:text="${s.nationalite.libelle}"></td>
 							<td th:text="${s.realisateur.nom}+' '+${s.realisateur.prenom}"></td>
-							<td><a th:href="${'/film/delete/'+s.ID}">Delete</a> | <a
-								th:href="${'/film/update/'+s.ID}">Update</a> </td>
+							<td><a th:href="${'/film/delete/'+s.ID}"><i class="fa fa-trash"></i> Delete</a> | <a
+								th:href="${'/film/update/'+s.ID}"><i class="fa fa-edit"></i> Update</a> </td>
 						</tr>
 					</tbody>
 				</table>

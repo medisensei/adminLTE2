@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<a class="btn btn-primary my-5 ml-2" th:href="@{/film/add}">Add
+		<a class="btn btn-primary my-5 ml-2" th:href="@{/film/add}"><i class="fa fa-table"></i> Add
 			New Film</a>
 		<div class="card">
 			<div class="card-header">
@@ -42,16 +42,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="s : ${filmList}">
-							<td th:text="${s.title}"></td>
-							<td th:text="${s.duree}"></td>
-							<td th:text="${s.annee}"></td>
-							<td th:text="${s.genre.libelle}"></td>
-							<td th:text="${s.nationalite.libelle}"></td>
-							<td th:text="${s.realisateur.nom}+' '+${s.realisateur.prenom}"></td>
-							<td><a th:href="${'/film/delete/'+s.ID}">Delete</a> | <a
-								th:href="${'/film/update/'+s.ID}">Update</a> | <a
-								th:href="@{'/film/details/'+${s.ID}}">Details</a></td>
+						<tr th:each="f : ${filmList}">
+							<td th:text="${f.title}"></td>
+							<td th:text="${f.duree}"></td>
+							<td th:text="${f.annee}"></td>
+							<td th:text="${f.genre.libelle}"></td>
+							<td th:text="${f.nationalite.libelle}"></td>
+							<td th:text="${f.realisateur.nom}+' '+${f.realisateur.prenom}"></td>
+							<td><a th:href="${'/film/delete/'+f.ID}"><i class="fa fa-trash"></i> Delete</a> | <a
+								th:href="${'/film/update/'+f.ID}"><i class="fa fa-edit"></i> Update</a> | <a
+								th:href="@{'/film/details/'+${f.ID}}"><i class="fa fa-bars"></i> Details</a></td>
 						</tr>
 					</tbody>
 				</table>

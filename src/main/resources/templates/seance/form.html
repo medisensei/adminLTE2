@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Seance Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="card card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Seance Formulaire</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<form id="seanceForm" th:object="${seance}"
+				th:action="@{/seance/save}" method="post">
+				<input type="hidden" th:field="*{ID}" />
+				<div class="card-body">
+					<div class="form-group">
+					 <div class="row">
+					  <div class="col-sm">
+					    <label for="date-projection" >Date Projection</label>	 
+   					 </div>
+					     			     
+                     <div class="col-sm">
+     				    <input type="date"  required="true" th:field="*{dateProjection}" id ="dateProjection" class="form-control" />
+    			     </div>
+					 <div class="col-sm">
+					 </div>
+					 <div class="col-sm">
+					 </div>
+				</div>
+						
+                    </div>
+					<div class="form-group">
+					 <div class="row">
+					  <div class="col-sm">
+							<label for="date-debut" >Date Debut</label> 
+                      
+   					 </div>
+    			<div class="col-sm">
+    			 <input type="time" value="20:00" required="true" th:field="*{dateDebuT}" id ="dateDebuT" class="form-control" />
+     				
+    			</div>
+    			 <div class="col-sm">
+					 </div>
+					 <div class="col-sm">
+					 </div>
+					 
+					 </div>
+						
+					</div>
+					
+					
+					<div class="form-group">
+					
+					 <div class="row">
+					  <div class="col-sm">
+					    <label for="date-debut" >Date Fin</label> 	 
+   					 </div>
+					     			     
+                     <div class="col-sm">
+					<input type="time" value="20:00" required="true" th:field="*{dateFin}" id ="dateDebuT" class="form-control" />
+    			     </div>
+					 
+					 
+					 <div class="col-sm">
+					 </div>
+					 <div class="col-sm">
+					 </div>
+					</div>
+					</div>
+	
+					<div class="form-group">
+						
+
+ 						<div class="row">
+					  <div class="col-sm">
+					   <label for="Film" >Film</label>	 
+   					 </div>
+					     			     
+                     <div class="col-sm">
+						<select th:field="*{film}" class="form-control">
+							<option th:each="f:${films}" th:value="${f.ID}" th:text="${f.title}"  />
+						</select>
+						</div>
+					 
+					 
+					 <div class="col-sm">
+					 </div>
+					 <div class="col-sm">
+					 </div>
+				</div>	
+					</div>
+					<div class="form-group">
+						 <div class="row">
+					  <div class="col-sm">
+					   <label for="Salle">Salle</label>  
+   					 </div>
+					     			     
+                     <div class="col-sm">
+                     <select th:field="*{salle}" class="form-control">
+							<option th:each="s:${salles}" th:value="${s.ID}" th:text="${s.numero}" />
+						</select>
+						</div>
+					 
+					 
+					 <div class="col-sm">
+					 </div>
+					 <div class="col-sm">
+					 </div>
+						</div>
+					</div>
+					
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>

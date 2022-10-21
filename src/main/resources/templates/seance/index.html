@@ -1,0 +1,62 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html layout:decorate="~{shared/layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>List of Seances</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<a class="btn btn-primary my-5 ml-2" th:href="@{/seance/add}"><i class="fa fa-table"></i> Ajouter une seance</a>
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title text-info">Seances</h3>
+
+				<div class="card-tools">
+				<form method="get" th:action="@{/seance}">
+					<div class="input-group input-group-sm" style="width: 150px;">
+					
+						<input type="date" name="filter" value="2022-10-21"
+							class="form-control float-right" placeholder="Search" th:value="${filter}" >
+
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-default">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body table-responsive p-0">
+				<table class="table table-striped text-nowrap">
+					<thead>
+						<tr>
+							<th>Date Projection</th>
+							<th>Date Debut</th>
+							<th>Date Fin</th>
+							<th>Film</th>
+							<th>Salle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="s : ${seanceList}">
+							<td th:text="${s.dateProjection}"></td>
+							<td th:text="${s.dateDebuT}"></td>
+							<td th:text="${s.dateFin}"></td>
+							<td th:text="${s.film.title}"></td>
+							<td th:text="${s.salle.numero}"></td>
+							
+							<td><a th:href="${'/seance/delete/'+s.ID}"><i class="fa fa-trash"></i> Suprimer</a> | <a
+								th:href="${'/seance/update/'+s.ID}"><i class="fa fa-edit"></i> Modifier</a> </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+
+	</div>
+</body>
+</html>

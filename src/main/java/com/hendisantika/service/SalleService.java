@@ -25,6 +25,7 @@ public class SalleService {
 	
 	public List<Salle>getSalleByNum(int num){
 		
+		
 		return salleRepository.findByNumero(num);
 		
 	}
